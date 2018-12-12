@@ -19,8 +19,8 @@ namespace Pong
 
             Thread.Sleep(1000);
 
-            game.VisualEngine.RendersPerSecond = 60;
-            game.UpdatesPerSecond = 30;
+            game.VisualEngine.RendersPerSecond = 20;
+            game.UpdatesPerSecond = 200;
 
             game.VisualEngine.Scene = scene;
 
