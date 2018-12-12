@@ -1,6 +1,6 @@
 ﻿namespace CGELib
 {
-
+    using CGELib.Sprites.Shapes;
     using System;
     using System.Text;
 
@@ -275,10 +275,23 @@
         public void Line(Point start, Point end, int color, ConsoleCharacter c = ConsoleCharacter.Full)
         {
             Point delta = end - start;
-            Point da = Point.Zero, db = Point.Zero;
-            if (delta.X < 0) da.X = -1; else if (delta.X > 0) da.X = 1;
-            if (delta.Y < 0) da.Y = -1; else if (delta.Y > 0) da.Y = 1;
-            if (delta.X < 0) db.X = -1; else if (delta.X > 0) db.X = 1;
+            Point da = new Point(0,0), db = new Point(0,0);
+
+            if (delta.X < 0)
+                da.X = -1;
+            else if (delta.X > 0)
+                da.X = 1;
+
+            if (delta.Y < 0)
+                da.Y = -1;
+            else if (delta.Y > 0)
+                da.Y = 1;
+
+            if (delta.X < 0)
+                db.X = -1;
+            else if (delta.X > 0)
+                db.X = 1;
+
             int longest = Math.Abs(delta.X);
             int shortest = Math.Abs(delta.Y);
 
@@ -286,7 +299,10 @@
             {
                 longest = Math.Abs(delta.Y);
                 shortest = Math.Abs(delta.X);
-                if (delta.Y < 0) db.Y = -1; else if (delta.Y > 0) db.Y = 1;
+                if (delta.Y < 0)
+                    db.Y = -1;
+                else if (delta.Y > 0)
+                    db.Y = 1;
                 db.X = 0;
             }
 
@@ -313,19 +329,17 @@
         /// <param name="end">Bottom Right corner of rectangle.</param>
         /// <param name="col">Color to draw with.</param>
         /// <param name="chr">Character to use.</param>
-        public void Rectangle(Point pos, Point end, int col = 0, ConsoleCharacter chr = ConsoleCharacter.Full)
+        public void Rectangle(Square square, ConsoleCharacter chr = ConsoleCharacter.Full)
         {
-            for (int i = 0; i < end.X - pos.X; i++)
-            {
-                SetPixel(new Point(pos.X + i, pos.Y), chr, col);
-                SetPixel(new Point(pos.X + i, end.Y), chr, col);
-            }
-
-            for (int i = 0; i < end.Y - pos.Y + 1; i++)
-            {
-                SetPixel(new Point(pos.X, pos.Y + i), chr, col);
-                SetPixel(new Point(end.X, pos.Y + i), chr, col);
-            }
+            Point tr = new Point(square.TopLeft.X + square.Width, square.TopLeft.Y).Rotate(square.Rotation, square.Center);
+            Point bl = new Point(square.TopLeft.X, square.TopLeft.Y + square.Height).Rotate(square.Rotation, square.Center);
+            Point tl = square.TopLeft.Rotate(square.Rotation,square.Center);            
+            Point br = square.BottomRight.Rotate(square.Rotation, square.Center);
+            
+            Line(tl, tr, square.Color, chr);
+            Line(tr, br, square.Color, chr);
+            Line(br, bl, square.Color, chr);
+            Line(bl, tl, square.Color, chr);
         }
 
         /// <summary> Draws a Rectangle and fills it. </summary>
