@@ -9,8 +9,8 @@ namespace CGELib.Sprites.Shapes
 {
     public class Square: Sprite
     {
-        public virtual Point TopLeft { get; set; } = new Point(0, 0);
-        public virtual Point BottomRight { get; set; } = new Point(0, 0);
+        public virtual Point TopLeft { get { return new Point(Center.X - Width / 2, Center.Y - Height / 2); } }
+        public virtual Point BottomRight { get { return new Point(Center.X + Width / 2, Center.Y + Height / 2); } }
 
         public virtual int Color { get; set; }
 
@@ -21,7 +21,7 @@ namespace CGELib.Sprites.Shapes
 
         public override bool Render(ConsoleOutput screen)
         {
-            screen.Rectangle(TopLeft, BottomRight, Color);
+            screen.Rectangle(this);
             return true;
         }
     }
