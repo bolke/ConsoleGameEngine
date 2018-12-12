@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CGELib.Interfaces
 {
-    public interface IScene
+    public interface IScene: IVisual
     {
         List<IActor> Actors { get; set; }
         List<ISprite> Sprites { get; set; }
