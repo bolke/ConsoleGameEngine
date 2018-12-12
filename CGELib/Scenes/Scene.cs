@@ -9,19 +9,23 @@ namespace CGELib.Scenes
         public List<ISprite> Sprites { get; set; } = new List<ISprite>();
         public ConsoleOutput Screen { get; set; }
 
+        public int Width { get; set; } = 0;
+        public int Height { get; set; } = 0;
+        public double Scale { get; set; } = 1.0f;
+        public double Rotation { get; set; } = 0.0f;
         public abstract bool Initialize();
 
         public virtual bool Update(long tick)
         {
             foreach (var actor in Actors)
-                actor.Update(tick);
+                actor.Update(tick);            
             return true;
         }
 
         public virtual bool Render(long tick)
         {
             foreach (var sprite in Sprites)
-                sprite.Render(Screen);
+                sprite.Render(Screen);            
             return true;
         }
 
