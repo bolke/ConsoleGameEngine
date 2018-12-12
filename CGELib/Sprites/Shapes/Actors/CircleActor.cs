@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CGELib.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CGELib.Sprites.Shapes.Actors
 {
-    public abstract class CircleActor : ActingSprite
+    public abstract class CircleActor : Sprite, IActor
     {
         public virtual int Radius { get; set; }
         public virtual int Color { get; set;}
@@ -21,5 +22,7 @@ namespace CGELib.Sprites.Shapes.Actors
             screen.Arc(Center, Radius, Color);
             return true;
         }
+
+        public abstract bool Update(long tick);
     }
 }
