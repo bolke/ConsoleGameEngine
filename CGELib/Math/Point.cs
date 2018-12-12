@@ -17,7 +17,6 @@ namespace CGELib
 
         public Point(): this(0, 0)
         {
-
         }
 
         public Point(int x, int y)
@@ -60,13 +59,36 @@ namespace CGELib
             return d;
         }
 
-        public void Clamp(Point min, Point max)
+        public Point RotateDeg(double deg, Point pivot = null)
+        {
+            return Rotate(deg* Deg2Rad, pivot);
+        }
+
+        public Point Rotate(double rad, Point pivot=null)
+        {
+            Vector n = Vector.Zero;
+
+            int x = X - pivot?.X??0;
+            int y = Y - pivot?.Y??0;
+
+            n.X = (float)(x * Math.Cos(rad / 57.3f) - y * Math.Sin(rad / 57.3f));
+            n.Y = (float)(x * Math.Sin(rad / 57.3f) + y * Math.Cos(rad / 57.3f));
+
+            X = (int)n.X + pivot?.X??0;
+            Y = (int)n.Y + pivot?.Y??0;
+
+            return this;
+        }
+
+        public Point Clamp(Point min, Point max)
         {
             X = (X > max.X) ? max.X : X;
             X = (X < min.X) ? min.X : X;
 
             Y = (Y > max.Y) ? max.Y : Y;
             Y = (Y < min.Y) ? min.Y : Y;
+
+            return this;
         }
     }
 }
