@@ -1,8 +1,13 @@
+[ORIGINAL creator]
 # ConsoleGameEngine
 ### C# Graphics Library for drawing graphics in Windows Command Prompt
 Olle Logdahl, 24 November 2018
 
 FORKED FROM: https://github.com/ollelogdahl/ConsoleGameEngine
+
+[MY FORK]
+Just having fun with the console visuals, wrapping a simple framework around it for managing 
+everything not visual.
 
 ## Licensing
 
