@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace CGELib.Interfaces
 {
-    public interface ISprite
+    public interface ISprite: IVisual
     {
         Point Center { get; set; }
         bool Render(ConsoleOutput screen);
-
         bool Initialize();
     }
 }
