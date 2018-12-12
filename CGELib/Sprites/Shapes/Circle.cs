@@ -10,7 +10,8 @@ namespace CGELib.Sprites.Shapes
 {
     public class Circle : Sprite
     {
-        public virtual int Radius { get; set; }
+        private int _radius = 0;
+        public virtual int Radius { get { return (int)Math.Round(_radius * Scale); } set { _radius = value; } }
         public virtual int Color { get; set; }
 
         public override bool Initialize()
