@@ -14,11 +14,13 @@ namespace Pong.Actors
             Width = 10;
             Height = 40;
             Color = 5;
+            Scale = 1;
             return base.Initialize();
         }
 
         public override bool Update(long tick)
         {
+            Rotation += .1f;
             return true;
         }
     }
