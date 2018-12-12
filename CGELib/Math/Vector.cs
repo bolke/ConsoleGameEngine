@@ -8,7 +8,6 @@ namespace CGELib
         public float X { get; set; }
         public float Y { get; set; }
 
-
         public static Vector Zero { get; private set; } = new Vector(0, 0);
         public Vector(float x, float y)
         {
