@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CGELib.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CGELib.Sprites.Shapes.Actors
 {
-    public abstract class TextActor: ActingSprite
+    public abstract class TextActor: Sprite, IActor
     {
         public virtual int Color { get; set; }
         public virtual string Text { get; set; } = "";
@@ -25,5 +26,7 @@ namespace CGELib.Sprites.Shapes.Actors
                 screen.WriteFiglet(Center, Text, Font, Color);            
             return true;
         }
+
+        public abstract bool Update(long tick);
     }
 }
