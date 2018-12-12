@@ -23,6 +23,7 @@ namespace CGEDemoLib.Pong
             left.Center.X = 10;
             left.Center.Y = 127;
             left.Color = 3;
+            left.Scale = 0.5f;
 
             right.Initialize();
             right.Center.X = 460;
@@ -44,6 +45,7 @@ namespace CGEDemoLib.Pong
 
         public override bool Update(long tick)
         {
+            
             return base.Update(tick);
         }
     }
